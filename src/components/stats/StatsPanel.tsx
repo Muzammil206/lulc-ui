@@ -6,7 +6,12 @@ import {
 import { computeDeltas, fmt, fmtDelta, cn } from '@/lib/utils'
 import type { ClassifyResponse, AppStatus } from '@/types'
 
-interface Props { result: ClassifyResponse | null; status: AppStatus }
+interface Props {
+  result: ClassifyResponse | null
+  status: AppStatus
+  year1?: number
+  year2?: number
+}
 
 // ── Recharts custom tooltip ───────────────────────────────
 function ChartTooltip({ active, payload, label }: any) {
@@ -79,7 +84,7 @@ function Empty() {
 }
 
 // ── Main panel ────────────────────────────────────────────
-export default function StatsPanel({ result, status }: Props) {
+export default function StatsPanel({ result, status, year1: year1Prop, year2: year2Prop }: Props) {
   const deltas = useMemo(() =>
     result ? computeDeltas(result.year1, result.year2) : [],
   [result])

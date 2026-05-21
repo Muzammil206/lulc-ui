@@ -7,12 +7,14 @@ import type { ClassifyResponse, AppStatus } from '@/types'
 interface Props {
   result: ClassifyResponse | null
   status: AppStatus
+  year1?: number
+  year2?: number
 }
 
 const BASEMAP = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
 const BASEMAP_ATT = '© <a href="https://carto.com/">CARTO</a> © OpenStreetMap'
 
-export default function MapView({ result, status }: Props) {
+export default function MapView({ result, status, year1, year2 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const handleRef    = useRef<HTMLDivElement>(null)
   const lineRef      = useRef<HTMLDivElement>(null)
