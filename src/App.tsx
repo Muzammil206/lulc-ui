@@ -17,8 +17,13 @@ export default function App() {
 
       <div className="flex flex-1 overflow-hidden">
         <Sidebar
-          aoiList={aoiList} aoiKey={aoiKey} year1={year1} year2={year2}
-          status={status} error={error}
+          aoiList={aoiList}
+          aoiKey={aoiKey}
+          year1={year1}
+          year2={year2}
+          status={status}
+          error={error}
+          result={result}
           onAoiChange={setAoiKey}
           onYear1Change={setYear1}
           onYear2Change={setYear2}
