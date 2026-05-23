@@ -1,6 +1,6 @@
 import type { ClassifyResponse, AOIListResponse } from '@/types'
 
-const BASE = import.meta.env.VITE_API_URL || 'localhost:3001'
+const BASE = import.meta.env.VITE_API_URL || 'https://lulc-backend-n0dw.onrender.com/'
 
 export async function fetchAOIList(): Promise<AOIListResponse> {
   const res = await fetch(`${BASE}/api/aoi`)
