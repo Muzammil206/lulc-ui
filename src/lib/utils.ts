@@ -3,7 +3,6 @@ import type { YearResult, DeltaStat } from '@/types'
 
 export const cn = (...i: ClassValue[]) => clsx(i)
 
-// Per-class bg colour tokens for stats cards
 const BG_MAP: Record<string, string> = {
   Forest:   'bg-forest-bg text-forest',
   Cropland: 'bg-crop-bg text-crop',
@@ -20,21 +19,32 @@ export function computeDeltas(y1: YearResult, y2: YearResult): DeltaStat[] {
     const d  = a2 - s1.areaKm2
     const p  = s1.areaKm2 > 0 ? (d / s1.areaKm2) * 100 : 0
     return {
-      name: s1.name, color: s1.color,
-      bgColor: classBg(s1.name),
-      areaKm2_y1: s1.areaKm2, areaKm2_y2: a2,
-      deltaKm2: Number(d.toFixed(2)),
-      deltaPct: Number(p.toFixed(1)),
+      name:       s1.name,
+      color:      s1.color,
+      bgColor:    classBg(s1.name),
+      areaKm2_y1: s1.areaKm2,
+      areaKm2_y2: a2,
+      deltaKm2:   Number(d.toFixed(2)),
+      deltaPct:   Number(p.toFixed(1)),
     }
   })
 }
 
-export const fmt = (n: number) =>
-  Math.abs(n) >= 1000 ? `${(n / 1000).toFixed(1)}k km²` : `${n.toFixed(1)} km²`
+export function fmt(n: number): string {
+  if (Math.abs(n) >= 1000) return `${(n / 1000).toFixed(1)}k km²`
+  return `${n.toFixed(1)} km²`
+}
 
-export const fmtDelta = (n: number) => `${n >= 0 ? '+' : ''}${fmt(n)}`
+export function fmtShort(n: number): string {
+  if (Math.abs(n) >= 1000) return `${(n / 1000).toFixed(1)}k`
+  return n.toFixed(1)
+}
 
-export const yearRange = (min: number, max: number): number[] => {
+export function fmtDelta(n: number): string {
+  return `${n >= 0 ? '+' : ''}${fmt(n)}`
+}
+
+export function yearRange(min: number, max: number): number[] {
   const a: number[] = []
   for (let y = max; y >= min; y--) a.push(y)
   return a
