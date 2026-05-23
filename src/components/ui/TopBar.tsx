@@ -16,15 +16,7 @@ export default function TopBar({ status, result, elapsed, onShare, copied }: Pro
 
       {/* Brand */}
       <div className="flex items-center gap-3 flex-shrink-0">
-        <div className="w-8 h-8 rounded-lg bg-teal-bg border border-teal-bd
-                        flex items-center justify-center">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <rect x="1" y="1" width="6" height="6" rx="1.5" fill="#0F7B6C"/>
-            <rect x="9" y="1" width="6" height="6" rx="1.5" fill="#16A34A" opacity="0.7"/>
-            <rect x="1" y="9" width="6" height="6" rx="1.5" fill="#16A34A" opacity="0.5"/>
-            <rect x="9" y="9" width="6" height="6" rx="1.5" fill="#0F7B6C" opacity="0.9"/>
-          </svg>
-        </div>
+        <img src="/logo1.png" alt="LULC Watch logo" className="w-8 h-8 rounded-sm" />
         <div>
           <p className="font-display font-bold text-[14px] text-ink leading-none tracking-tight">
             LULC<span className="text-teal">Watch</span>
